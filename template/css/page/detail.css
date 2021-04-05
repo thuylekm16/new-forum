@@ -1,0 +1,71 @@
+div .content{
+    width: 50%;
+    background-color: white;
+    padding:30px;
+}
+div.body .sidebar .sidebar-title h2{
+    background-color: #1c1b1b;
+    color: white;
+    padding: 10px;
+    margin-left: 10%;
+    margin-top: 0;
+    text-align: center;
+
+}
+div.body .sidebar{
+    width: 25%;
+}
+div.body .sidebar .items{
+    list-style: none;
+    display: block;
+    margin-top: 0;
+}
+div.body .sidebar .items .item{
+    background-color: #26466e;
+    color: white;
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+div.body::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+article {
+    margin-left: 100px;
+}
+
+article .container {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+}
+
+div .header-forum div{
+    display: inline-block;
+}
+div .header-forum h1{
+    text-align: center;
+}
+div .header-forum p{
+    font-size: 12px;
+    display: inline-block;
+    font-weight: bold;
+    color: #5a626e;
+}
+/*comment*/
+div.comment {
+    display: inline-block;
+    background-color: #edf3f5;
+    width: 600px;
+}
+div.comment img{
+    width: 50px ;
+}
+div.comment div.comment-user{
+    width: 100px;
+
+}
