@@ -5,6 +5,9 @@ error_reporting(E_ALL);
 session_start();
 require_once('../database/mysql.php');
 $connect = connect();
+if(!isset($_SESSION['admin'])){
+    header('location:/admin/login.php');
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -44,69 +47,7 @@ $connect = connect();
 </header>
 <div class="body">
     <div class="list-post">
-        <div class="list-header">
-            <div class="topic">Topic</div>
-            <div class="date">Date</div>
-            <div class="reply">Reply</div>
-            <div class="view">View</div>
-        </div>
-        <ul>
-            <li class="">
-                <div class="topic"><a href="#">Coconut Cod</a><p>by chutchut</p></div>
-                <div class="date">Nov,12, 2021</div>
-                <div class="reply">11</div>
-                <div class="view">12323</div>
-            </li>
-            <li class="">
-                <div class="topic"><a href="#">Coconut Cod</a><p>by chutchut</p></div>
-                <div class="date">Nov,12, 2021</div>
-                <div class="reply">11</div>
-                <div class="view">12323</div>
-            </li>
-            <li class="">
-                <div class="topic"><a href="#">Coconut Cod</a><p>by chutchut</p></div>
-                <div class="date">Nov,12, 2021</div>
-                <div class="reply">11</div>
-                <div class="view">12323</div>
-            </li>
-            <li class="">
-                <div class="topic"><a href="#">Coconut Cod</a><p>by chutchut</p></div>
-                <div class="date">Nov,12, 2021</div>
-                <div class="reply">11</div>
-                <div class="view">12323</div>
-            </li>
-            <li class="">
-                <div class="topic"><a href="#">Coconut Cod</a><p>by chutchut</p></div>
-                <div class="date">Nov,12, 2021</div>
-                <div class="reply">11</div>
-                <div class="view">12323</div>
-            </li>
-            <li class="">
-                <div class="topic"><a href="#">Coconut Cod</a><p>by chutchut</p></div>
-                <div class="date">Nov,12, 2021</div>
-                <div class="reply">11</div>
-                <div class="view">12323</div>
-            </li>
-            <li class="">
-                <div class="topic"><a href="#">Coconut Cod</a><p>by chutchut</p></div>
-                <div class="date">Nov,12, 2021</div>
-                <div class="reply">11</div>
-                <div class="view">12323</div>
-            </li>
-        </ul>
-        <div class="paginate">
-            <div class="paginate-items">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a href="#" class="active">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">&raquo;</a>
-            </div>
-        </div>
-
+         <h1>DASHBOARD</h1>
     </div>
     <div class="sidebar">
         <div class="sidebar-title">

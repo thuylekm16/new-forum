@@ -18,31 +18,28 @@ if(isset($_SESSION['user'])){
 if(isset($_POST['fullname'])){
     require_once('database/mysql.php');
     $fullname = $_POST['fullname'];
+    $id = $_POST['id'];
     $birthday = $_POST['birthday'];
     $sex = $_POST['sex'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
-    $re_password = $_POST['re-password'];
-    if($password == $re_password){
         $con = connect();
-        $query = "SELECT id FROM users WHERE email = '$email'";
-        $result = $connect->query($query);
-        if($result->num_rows > 0 ){
-            $errEmail = true;
-        }else{
-            $password = md5($password);
-            $query = "INSERT INTO users (usertype,fullname, birthday, sex, email, password) VALUES ('2','$fullname','$birthday','$sex','$email','$password')";
-            $re = $con->query($query);
-            if($re){
-                header('location:infor.php');
-            }else{
-                $errRegister = true;
+        $query = "SELECT * FROM users WHERE id = $id";
+        $user = $connect->query($query);
+        if($user->num_rows > 0 ){
+            $user = $user->fetch_all(MYSQLI_ASSOC)[0];
+            $user_id = $user['id'];
+            $query = "UPDATE users SET fullname = '$fullname', birthday = '$birthday', sex = '$sex' WHERE id='$user_id'";
+            $result = $connect->query($query);
 
+            if($result){
+                $query = "SELECT * FROM users WHERE id = $id";
+                $result = $connect->query($query);
+                $result = $result->fetch_all(MYSQLI_ASSOC)[0];
+                $_SESSION['user'] = $result;
             }
+        }else{
+
         }
-    }else{
-        $errorRePassword = true;
-    }
 }
 ?>
 <!doctype html>
@@ -59,6 +56,7 @@ if(isset($_POST['fullname'])){
 <?php require_once('components/header.php')?>
 <div class="body">
     <form method="post" action="">
+        <input type="hidden" name="id" value="<?= $result['id']?>">
     <div class="register-container">
         <div class="register">
             <h2>EDIT INFORMATION</h2>
@@ -71,21 +69,12 @@ if(isset($_POST['fullname'])){
                 </div>
                 <div class="sex">
                     <select name="sex">
-                        <?php if($result['sex']==1):?>
-                        <option >Male</option>
-                         <?php else: ?>
-                        <option>Female</option>
-                        <?php endif?>
+                        <option <?php if($result['sex']==1) echo 'selected'?> value="1">Male</option>
+                        <option <?php if($result['sex']==2) echo 'selected'?> value="2">Female</option>
                     </select>
                 </div>
                 <div class="email">
                     <input type="text" placeholder="email" name="email" value="<?= $result['email'] ?>">
-                </div>
-                <div class="password">
-                    <input type="password" placeholder="password" name="password" value="<?= $result['password'] ?>">
-                </div>
-                <div class="password">
-                    <input type="password" placeholder="comfirm-password" name="re-password" value="<?= $result['password'] ?>">
                 </div>
             </div>
             <div class="sign-in">

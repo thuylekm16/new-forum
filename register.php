@@ -28,7 +28,7 @@ if(isset($_POST['name'])){
             $errEmail = true;
         }else{
             $password = md5($password);
-            $query = "INSERT INTO users (usertype,fullname, birthday, sex, email, password) VALUES ('1','$fullname','$birthday','$sex','$email','$password')";
+            $query = "INSERT INTO users (usertype,fullname, birthday, sex, status ,email, password) VALUES ('1','$fullname','$birthday','$sex',1,'$email','$password')";
             $result = $connect->query($query);
             if($result){
                 header('location:login.php');

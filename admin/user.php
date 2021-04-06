@@ -70,7 +70,8 @@ $result = $result->fetch_all(MYSQLI_ASSOC);
                         echo 'Nữ';
                     ?>
                 </div>
-                <div class="action"><button>edit</button></div>
+                <div class="action"><button>delete</button></div>
+                <div class="action"><button><a href="edit-user.php">edit</a></button></div>
             </li>
             <?php endforeach;?>
         </ul>
